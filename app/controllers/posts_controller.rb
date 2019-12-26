@@ -1,41 +1,42 @@
 class PostsController < ApplicationController
-    before_action :find_post, only: [:show, :edit, :destroy, :update]
+  before_action :find_post, only: [:show, :edit, :destroy, :update]
 
-    def index
+  def index
     @posts = current_user.posts
   end
- 
- def new
+
+  def new
     @post = Post.new
   end
- 
- 
-def create
+
+
+  def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path, notice: 'Post Created Successfully'
     else
       render :new
-    end 
-  end 
+    end
+  end
 
-   def update
+  def update
     if @post.update(post_params)
-       redirect_to post_path(@post), notice: 'Post Updated Successfully'
+      redirect_to post_path(@post), notice: 'Post Updated Successfully'
     else
       render :edit
-    end 
+    end
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path,  notice: 'Post Destroy Successfully'
+    redirect_to posts_path, notice: 'Post Destroy Successfully'
   end
 
-private
+  private
+
   def post_params
-     params.require(:post).permit(:title, :content, :user_id)
+    params.require(:post).permit(:title, :content, :user_id)
   end
 
   def find_post

@@ -18,8 +18,6 @@ import "bootstrap"
 import "controllers"
 
 
-
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -27,21 +25,19 @@ import "controllers"
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-document.addEventListener('turbolinks:load', function(){
+// infinite scrolling
+
+document.addEventListener('turbolinks:load', function () {
 
     var url;
     url = $('[rel="next"]').attr('href');
-      
-    $(window).scroll(function() { 
+
+    $(window).scroll(function () {
         if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
             $('.pagination').text("featching more products...")
             $.getScript(url);
         }
-      });
-
-
-
-  
+    });
 });
 
 

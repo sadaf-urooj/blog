@@ -1,50 +1,49 @@
-<div class="card shadow-sm mt-5 border-0">    
+<div class="card shadow-sm mt-5 border-0">
   <div class="card-header">
-    <h3><%= post.title %></h3>     
-    <b>by</b> <i><%= post.user.email %> , <%= time_ago_in_words(post.created_at) %></i> ago   
+    <h3><%= post.title %></h3>
+    <b>by</b> <i><%= post.user.email %> , <%= time_ago_in_words(post.created_at) %></i> ago
   </div>
 
-  <div class="card-body"  data-controller="right-click">   
+  <!--    quote and quote selection stimulus work-->
+  <div class="card-body" data-controller="right-click">
     <div class="card-text" id="box" data-action="contextmenu->right-click#showmenu" data-target="right-click.content"><%= post.content %></div>
 
-     <ul class="menu" data-target="right-click.menu" data-action="mouseleave->right-click#hidemenu" >
-        <li class="menu-item" id="quote" data-target="right-click.quote" data-action="click->right-click#quote click->right-click#hidemenu">Quote</li>
-
-        <li class="menu-item" id="quote2" data-target="right-click.quote2" data-action="click->right-click#quote2 click->right-click#hidemenu">Quote Selection</li>       
+    <ul class="menu" data-target="right-click.menu" data-action="mouseleave->right-click#hidemenu">
+      <li class="menu-item" id="quote" data-target="right-click.quote" data-action="click->right-click#quote click->right-click#hidemenu">
+        Quote
+      </li>
+      <li class="menu-item" id="quote2" data-target="right-click.quote2" data-action="click->right-click#quote2 click->right-click#hidemenu">
+        Quote Selection
+      </li>
     </ul>
 
+    <!--  comment form tag-->
     <% if user_signed_in? %>
-      <%= form_with model: [post, post.comments.build], data: {controller: "clear-inputs", 
-        action: 'ajax:success->clear-inputs#clear'}   do |f| %>
 
+      <%= form_with model: [post, post.comments.build], data: {controller: "clear-inputs", action: 'ajax:success->clear-inputs#clear'} do |f| %>
         <div class="card">
           <div class="card-body">
             <!--   hidden field and div for quote selection text-->
             <div data-target="right-click.quoteText clear-inputs.quote" class="hidden-div"></div>
-            <%= f.hidden_field :quote, data: { target: 'right-click.quoteHidden' } %>
+            <%= f.hidden_field :quote, data: {target: 'right-click.quoteHidden'} %>
 
-          <%= f.text_area :text, placeholder: 'Type your comment here...', rows: 3, 
-          class: "text-field form-control" ,  data: {target: 'clear-inputs.input right-click.input'}  %>
-            <%= f.submit 'Comment', class: "btn btn-primary btn-sm float-right mt-3" %>        
+            <%= f.text_area :text, placeholder: 'Type your comment here...', rows: 3,
+                            class: "text-field form-control", data: {target: 'clear-inputs.input right-click.input'} %>
+            <%= f.submit 'Comment', class: "btn btn-primary btn-sm float-right mt-3" %>
           </div>
         </div>
       <% end %>
-      <% else %>
-          <%= link_to("Please Login to Comment", new_user_session_path) %>          
+    <% else %>
+      <%= link_to("Please Login to Comment", new_user_session_path) %>
     <% end %>
-    
+
+    <!--    render collection of all comments bellow post-->
     <div class="card mt-4">
       <div class="card-body">
         <div id="comments_<%= post.id %>">
-        <%= render  post.comments.reject {|comment| comment.new_record?} %>                   
+          <%= render post.comments.reject { |comment| comment.new_record? } %>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 </div>
-
-
-
-<!--Button to invoke the 
-    function to get the selected text-->
-  

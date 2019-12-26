@@ -1,8 +1,8 @@
 class Comment < ApplicationRecord
-    belongs_to :post 
-    belongs_to :user
+  belongs_to :post
+  belongs_to :user
 
-    validates_presence_of :text
-    default_scope { order(created_at: :desc) }
-   
+  validates_presence_of :text
+  default_scope { order(created_at: :desc) }
+
 end

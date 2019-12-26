@@ -3,35 +3,27 @@
     <div class="col-11">
       <div class="row">
         <div class="d-inline-block mr-3"><i class="fas fa-user-circle fa-2x"></i></div>
-        <div class="d-inline-block pb-1"> <span class="font-weight-bold"><%= comment.user.email %></span>
-          <span class="font-italic"><%= time_ago_in_words(comment.created_at) %> ago</span></div>
-        </div>
-      
-       
-       
-        <p class="ml-5"> <%= best_in_place comment, :text, :as => :textarea, url: post_comment_path(comment.post, comment), 
-        activator: "#comment_#{comment.id}", display_with: lambda {|text| text.html_safe}, inner_class: 'form-control' %> </p>
-         <!-- <p> <%= comment.text.html_safe %> </p> -->     
-    </div>
-
-    <% if user_signed_in? %>
-      <div class="col-1">        
-          <div class="dropdown">
-            <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">             
-            <li><%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "like-btn btn", 
-            id: "comment_#{comment.id}",   remote: true %>                        
-            <%= link_to 'Delete', post_comment_path(comment.post, comment), class: "like-btn btn", method: :delete, remote: true %></li>     
-          </div>          
+        <div class="d-inline-block pb-1"><span class="font-weight-bold"><%= comment.user.email %></span>
+          <span class="font-italic"><%= time_ago_in_words(comment.created_at) %> ago</span>
         </div>
       </div>
-    <% end %> 
+
+      <!--  comment input field with best_in_place-->
+      <p class="ml-5"> <%= best_in_place comment, :text, :as => :textarea, url: post_comment_path(comment.post, comment),
+      activator: "#comment_#{comment.id}", display_with: lambda { |text| text.html_safe }, inner_class: 'form-control' %> </p>
+    </div>
+
+     <!--  dropdown for edit or delete comment -->
+    <% if user_signed_in? %>
+      <div class="col-1">
+        <div class="dropdown">
+          <button class="btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <%= link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "like-btn btn dropdown-item", id: "comment_#{comment.id}", remote: true %>
+            <%= link_to 'Delete', post_comment_path(comment.post, comment), class: "like-btn btn dropdown-item", method: :delete, remote: true %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-
-
-    
-
-  <%# link_to 'Edit', edit_post_comment_path(comment.post, comment), class: "like-btn btn", 
-            id: "comment_#{comment.id}",   remote: true %>                        
-          <%# link_to 'Delete', post_comment_path(comment.post, comment), class: "like-btn btn", method: :delete, remote: true %>
