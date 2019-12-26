@@ -1,0 +1,26 @@
+ //  append incoming posts when scroll down
+ $('#posts').append('<%= j(render(@posts)) %>');
+
+ //replace or remove pagination links
+  <% if @posts.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate(@posts) %>');
+  <% else %>
+    $('.pagination').remove();
+  <% end %>
+
+  <% sleep 1 %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

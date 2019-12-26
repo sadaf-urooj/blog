@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="col-sm-6 offset-3">
+    <div class="card mt-5">
+      <div class="card-body">
+        <h1>Post Detail</h1><br>
+        <%= link_to("<< Back to List", posts_path, class: "btn btn-dark btn-sm") %><br><br>
+        <p>
+          <strong>Name:</strong>
+          <%= @post.title.capitalize %>
+        </p>
+        <p>
+          <strong>Content:</b>:</strong>
+          <%= @post.content %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+

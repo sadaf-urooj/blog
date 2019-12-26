@@ -1,3 +1,49 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+        html{
+            font-size: 16px;
+            font-family: sans-serif;
+            line-height: 1.5;
+            -moz-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            box-sizing: border-box;
+        }
+       
+      
+       
+        .menu{
+            width: 12rem;
+            height: 4.5rem;
+            background-color: #f4f4f4;
+            color: #333;
+            border: 1px solid #aaa;
+            box-shadow: 2px 2px 2px #999;
+            border-radius: 0.2rem;
+            list-style: none;
+            position: fixed;
+            z-index: 99999;
+        }
+        .menu.off{
+            top: -200%;
+            left: -200%;
+        }
+        .menu-item{
+       
+        }
+        .menu-item:hover,
+        .menu-item:active{
+            
+            font-weight: 500;
+        }
+
+    #color {
+        background-color: #EFEFEF;
+    }
+
+   
+
