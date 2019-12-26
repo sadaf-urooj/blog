@@ -24,11 +24,15 @@
         <div class="card">
           <div class="card-body">
             <!--   hidden field and div for quote selection text-->
+            <div class="text-right">
+              <button name="button" type="button" class="btn btn-link d-none" data-action="click->right-click#cancel" data-target="right-click.cross clear-inputs.cross">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
             <div data-target="right-click.quoteText clear-inputs.quote" class="hidden-div"></div>
             <%= f.hidden_field :quote, data: {target: 'right-click.quoteHidden'} %>
 
-            <%= f.text_area :text, placeholder: 'Type your comment here...', rows: 3,
-                            class: "text-field form-control", data: {target: 'clear-inputs.input right-click.input'} %>
+            <%= f.text_area :text, placeholder: 'Type your comment here...', rows: 3, class: "text-field form-control", data: {target: 'clear-inputs.input right-click.input'} %>
             <%= f.submit 'Comment', class: "btn btn-primary btn-sm float-right mt-3" %>
           </div>
         </div>
