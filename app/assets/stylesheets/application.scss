@@ -1,1 +1,17 @@
+//= require actiontext
 @import "bootstrap/scss/bootstrap";
+
+.login-card {
+    
+    margin-top: 11rem;
+}
+
+.hidden-div {
+  border: 1px solid #ced4da;
+  border-bottom: none;
+}
+
+
+.text-field {
+  border-top: none;
+}

@@ -1,0 +1,23 @@
+$('#posts').append('<%= j(render(@posts)) %>');
+<% if @posts.next_page %>
+    $('.pagination').replaceWith('<%= j will_paginate(@posts) %>');
+    console.log('abc');
+<% else %>
+    $('.pagination').remove();
+<% end %>
+<% sleep 1 %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

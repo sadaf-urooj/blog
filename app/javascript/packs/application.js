@@ -7,10 +7,17 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("trix")
+require("@rails/actiontext")
 
-import "controllers"
+window.$ = $;
+window.jquery = $; // to get jQuery or some other library you're after, if you'd want it
+
 
 import "bootstrap"
+import "controllers"
+
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -19,3 +26,26 @@ import "bootstrap"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+document.addEventListener('turbolinks:load', function(){
+
+    var url;
+    url = $('[rel="next"]').attr('href');
+      
+    $(window).scroll(function() { 
+        if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+            $('.pagination').text("featching more products...")
+            $.getScript(url);
+        }
+      });
+
+
+
+  
+});
+
+
+
+
+
+

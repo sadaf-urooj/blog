@@ -1,0 +1,12 @@
+var container = document.querySelector('#comments_<%= @comment.post_id %>');
+var a = document.createElement('div');
+
+a.innerHTML = "<%= j(render partial: 'comments/comment',locals: {comment: @comment}) %>";
+container.insertBefore(a, container.firstChild);
+
+$(".best_in_place").best_in_place();
+
+$('.best_in_place').bind("ajax:success", function () {
+        $(this).html($(this).text())
+    });
+
