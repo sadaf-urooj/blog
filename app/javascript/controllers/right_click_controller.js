@@ -1,7 +1,7 @@
 import {Controller} from "stimulus";
 
 export default class extends Controller {
-    static targets = ['quote', 'quote2', 'menu', 'input', 'content', 'quoteText', 'quoteHidden']
+    static targets = ['quote', 'quote2', 'menu', 'input', 'content', 'quoteText', 'quoteHidden', 'cross'];
 
     connect() {
         this.menuTarget.classList.add('off')
@@ -18,7 +18,8 @@ export default class extends Controller {
         this.menuTarget.style.top = `${e.clientY}px`;
         this.menuTarget.style.left = `${e.clientX}px`;
         this.menuTarget.classList.remove('off');
-        this.selectedText = window.getSelection().toString()
+        this.selectedText = window.getSelection().toString();
+
     }
 
     hidemenu(e) {
@@ -37,6 +38,7 @@ export default class extends Controller {
         this.quoteHiddenTarget.value = '<i class="fas fa-quote-left fa-xs"></i> ' + this.selectedText + ' <i class="fas fa-quote-right fa-xs"></i><br>'
         // target div above the comment box
         this.quoteTextTarget.innerHTML = '<i class="fas fa-quote-left fa-xs"></i> ' + this.selectedText + ' <i class="fas fa-quote-right fa-xs"></i><br>'
+        this.crossTarget.classList.remove('d-none');
     }
 
     quote2(e) {
@@ -45,5 +47,16 @@ export default class extends Controller {
         this.quoteHiddenTarget.value = '<i class="fas fa-quote-left fa-xs"></i> ' + this.contentTarget.innerText + ' <i class="fas fa-quote-right fa-xs"></i><br>'
         // target div above the comment box
         this.quoteTextTarget.innerHTML = '<i class="fas fa-quote-left fa-xs"></i> ' + this.contentTarget.innerText + ' <i class="fas fa-quote-right fa-xs"></i><br>'
+        this.crossTarget.classList.remove('d-none');
     }
+
+    cancel(e){
+        this.quoteTextTarget.innerHTML = '';
+        this.quoteHiddenTarget.value = '';
+        this.crossTarget.classList.add('d-none');
+
+    }
+
+
+
 }
