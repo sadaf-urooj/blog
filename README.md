@@ -19,7 +19,6 @@ All the blog posts are displayed on the homepage with infinite scrolling.
 app can be configure by following these steps:
 1. Clone the repo `git clone git@github.com:sadaf-urooj/blog.git`
 2. cd to into app directory
-3. Run bundle
-4. Run cp config/database.yml.example config/database.yml and configure the database credentials.
-5. Run rails db:create 
-6. Run rails db:migrate
+3. Run `bundle`
+4. Run `rails db:create` 
+5. Run `rails db:migrate`
