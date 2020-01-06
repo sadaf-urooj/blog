@@ -29,7 +29,7 @@ document.addEventListener('turbolinks:load', function () {
     $(window).scroll(function () {
         let url = $('[rel="next"]').attr('href');
         if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-            $('.pagination').text("featching more products...")
+            $('.pagination').text("fetching more posts...")
             $.getScript(url);
         }
     });
