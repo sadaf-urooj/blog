@@ -8,8 +8,9 @@ export default class extends Controller {
     }
 
     showmenu(e) {
-
-        let menu = null;
+        if (this.dataset.authenticated !== 'true') {
+            return;
+        }
         //stop the real right click menu
         e.preventDefault();
         //show the custom menu
@@ -19,7 +20,6 @@ export default class extends Controller {
         this.menuTarget.style.left = `${e.clientX}px`;
         this.menuTarget.classList.remove('off');
         this.selectedText = window.getSelection().toString();
-
     }
 
     hidemenu(e) {
@@ -50,13 +50,10 @@ export default class extends Controller {
         this.crossTarget.classList.remove('d-none');
     }
 
-    cancel(e){
+    cancel(e) {
         this.quoteTextTarget.innerHTML = '';
         this.quoteHiddenTarget.value = '';
         this.crossTarget.classList.add('d-none');
 
     }
-
-
-
 }

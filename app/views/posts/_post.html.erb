@@ -5,7 +5,7 @@
   </div>
 
   <!--    quote and quote selection stimulus work-->
-  <div class="card-body" data-controller="right-click">
+  <div class="card-body" data-controller="right-click" data-authenticated="<%= user_signed_in? %>">
     <div class="card-text" id="box" data-action="contextmenu->right-click#showmenu" data-target="right-click.content"><%= post.content %></div>
 
     <ul class="menu" data-target="right-click.menu" data-action="mouseleave->right-click#hidemenu">
