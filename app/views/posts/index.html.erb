@@ -10,7 +10,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.title %></td>
-        <td><%= post.content %></td>
+        <td class="w-75"><%= post.content %></td>
 
         <td class="text-center"><%= link_to 'View', post_path(post), class: "btn btn-outline-info btn-sm mr-1" %>
           <%= link_to 'Edit', edit_post_path(post), class: "btn btn-outline-primary btn-sm mr-1" %>
