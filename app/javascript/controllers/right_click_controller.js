@@ -8,7 +8,7 @@ export default class extends Controller {
     }
 
     showmenu(e) {
-        if (this.dataset.authenticated !== 'true') {
+        if (this.element.dataset.authenticated !== 'true') {
             return;
         }
         //stop the real right click menu
