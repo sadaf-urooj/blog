@@ -16,7 +16,6 @@
         Quote Selection
       </li>
     </ul>
-
     <!--  comment form tag-->
     <% if user_signed_in? %>
 
@@ -31,7 +30,6 @@
             </div>
             <div data-target="right-click.quoteText clear-inputs.quote" class="hidden-div"></div>
             <%= f.hidden_field :quote, data: {target: 'right-click.quoteHidden'} %>
-
             <%= f.text_area :text, placeholder: 'Type your comment here...', rows: 3, class: "text-field form-control", data: {target: 'clear-inputs.input right-click.input'} %>
             <%= f.submit 'Comment', class: "btn btn-primary btn-sm float-right mt-3" %>
           </div>
@@ -40,14 +38,9 @@
     <% else %>
       <%= link_to("Please Login to Comment", new_user_session_path) %>
     <% end %>
-
     <!--    render collection of all comments bellow post-->
-    <div class="card mt-4">
-      <div class="card-body">
-        <div id="comments_<%= post.id %>">
-          <%= render post.comments.reject { |comment| comment.new_record? } %>
-        </div>
-      </div>
+    <div id="comments_<%= post.id %>">
+      <%= render post.comments.reject { |comment| comment.new_record? } %>
     </div>
   </div>
 </div>

@@ -28,11 +28,8 @@ import "controllers"
 // infinite scrolling
 
 document.addEventListener('turbolinks:load', function () {
-
-    var url;
-    url = $('[rel="next"]').attr('href');
-
     $(window).scroll(function () {
+        let url = $('[rel="next"]').attr('href');
         if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
             $('.pagination').text("featching more products...")
             $.getScript(url);
